@@ -1,0 +1,28 @@
+site_name: Reproducing SPO on GSM8K
+site_description: A pedagogical walkthrough of Segment Policy Optimization and an audited one-A100 reproduction on GSM8K
+site_url: https://queelius.github.io/spo-gsm8k-reproduction/
+repo_url: https://github.com/queelius/spo-gsm8k-reproduction
+docs_dir: site-docs
+theme:
+  name: material
+  features: [navigation.sections, navigation.top, content.code.copy, toc.integrate]
+  palette:
+    - scheme: default
+      primary: teal
+      toggle: {icon: material/weather-night, name: Dark mode}
+    - scheme: slate
+      primary: teal
+      toggle: {icon: material/weather-sunny, name: Light mode}
+markdown_extensions:
+  - admonition
+  - footnotes
+  - tables
+  - toc: {permalink: true}
+  - pymdownx.arithmatex: {generic: true}
+  - pymdownx.superfences
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+nav:
+  - Guide: index.md
+  - Result and evidence: result.md
+  - Slides: slides.md
