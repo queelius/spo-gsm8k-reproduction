@@ -5,6 +5,8 @@
 \definecolor{Ink}{HTML}{17324D}
 \definecolor{Teal}{HTML}{007F7B}
 \definecolor{Gray}{HTML}{657483}
+\definecolor{Rust}{HTML}{B5533C}
+\setbeamercolor{alerted text}{fg=Rust}
 \definecolor{Soft}{HTML}{EEF3F6}
 \setbeamercolor{normal text}{fg=Ink,bg=white}
 \setbeamercolor{frametitle}{fg=Ink}
@@ -14,10 +16,24 @@
 \setbeamertemplate{navigation symbols}{}
 \setbeamersize{text margin left=9mm,text margin right=9mm}
 \setbeamerfont{frametitle}{size=\large,series=\bfseries}
-\setbeamertemplate{footline}{\hspace{9mm}\scriptsize From RL reproduction to RLM research | 14 Oct 2026\hfill\insertframenumber/6\hspace{9mm}\vspace{3mm}}
+\setbeamertemplate{footline}{\hspace{9mm}\scriptsize From RL reproduction to RLM research | 14 Oct 2026, revised 20 Oct\hfill\insertframenumber/\inserttotalframenumber\hspace{9mm}\vspace{3mm}}
 \newcommand{\source}[1]{\vfill{\scriptsize\color{Gray}#1\par}}
 \hypersetup{pdftitle={A stronger foundation for RL on recursive language models},pdfauthor={Alex Towell}}
+\title{A stronger foundation for RL on recursive language models}
+\subtitle{Reproducing Segment Policy Optimization on GSM8K before extending RL to RLMs}
+\author{Alex Towell}
+\date{Advisor meeting, 14 October 2026 (revised 20 October)}
 \begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\vfill
+\begin{block}{In one sentence}
+Rerunning the authors' SPO code on one A100 took the matched starting model from 39.8\% to
+58.2\% on GSM8K (paper: 56.7\%) at an endpoint fixed before training; the RL workflow is now a
+tested reference for the RLM work.
+\end{block}
+\end{frame}
 
 \begin{frame}[t]
 \frametitle{Before extending RL, establish that we can make it work.}
@@ -94,6 +110,7 @@ legend style={font=\scriptsize,at={(.03,.97)},anchor=north west,draw=none,fill=w
 Matched start & 39.77\%\\
 Paper target & 56.70\%\\
 \textbf{Our final} & \textbf{58.19\%}\\
+Best intermediate & 58.32\%\\
 \end{tabular}
 \medskip
 
@@ -113,28 +130,37 @@ over our starting model.
 \end{frame}
 
 \begin{frame}[t]
-\frametitle{The main lesson is an end-to-end test of our RL practice.}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.31\textwidth}>{\raggedright\arraybackslash}p{.62\textwidth}@{}}
-\toprule
-What we learned & Evidence and practical consequence\\
-\midrule
-\textbf{Measure gain from a matched start.} &
-39.77\% to 58.19\% under the same scoring rule:
-the gain matters, not just the final score.\\[2mm]
-\textbf{Check the whole feedback loop.} &
-Check answers, rewards and weight updates;
-independently regrade the final responses.\\[2mm]
-\textbf{Keep conclusions within the evidence.} &
-One run recovered the performance level. This does not establish
-cross-seed robustness or the best algorithm for RLM.\\
-\bottomrule
-\end{tabular}
+\frametitle{The first attempt collapsed; the diagnosis is the main lesson.}
+\small
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.50\textwidth}
+\textbf{What happened.} Test accuracy rose to 50.5\% at 4,336 updates, fell to
+\alert{22.2\%} at 7,856, and the process crashed.
 \medskip
-\begin{block}{Answer to the advisor's challenge}
-We can reproduce a published LLM RL learning result and verify the gain.
-This supports our research practice; RLM is the next test.
+
+\textbf{What we found.} An independent regrade showed the decline was real. Generation
+requests began with the BOS token while training-side tokenization omitted it, so answers
+were sampled under one input and scored under another. The crash: a batch guard zeroed four
+batches in a row and the optimizer rejected the zero gradient.
+\medskip
+
+\textbf{What we did.} Three isolated, hash-pinned fixes; a restart from the original
+weights; the endpoint fixed in advance.
+\end{column}
+\begin{column}{.46\textwidth}
+\begin{block}{Lessons we carry forward}
+\begin{itemize}\setlength{\itemsep}{1pt}
+\item Score a known model first: it separates evaluator bugs from training bugs.
+\item Report the gain from a matched start under one scoring rule.
+\item Check that rewarded tokens are the scored tokens, BOS included.
+\item Regrade saved answers independently; preserve failed runs.
+\end{itemize}
 \end{block}
-\source{Sources: matched baseline, training audits, independent final regrade and preserved full state; linked in evidence.md.}
+\textbf{Answer to the advisor's challenge:} we can reproduce a published LLM RL result and
+verify the gain. RLM is the next test.
+\end{column}
+\end{columns}
+\source{docs/diagnosis-and-restart-20261012.md and evidence.md. The BOS mismatch is a supported hypothesis, not a demonstrated cause.}
 \end{frame}
 
 \begin{frame}[t]

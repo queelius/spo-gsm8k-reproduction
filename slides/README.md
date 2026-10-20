@@ -1,4 +1,13 @@
-# From RL reproduction to RLM research
+# Slides
+
+Two decks:
+
+- **Tutorial deck** ([tutorial.pdf](tutorial.pdf), 14 slides, source [tutorial.tex](tutorial.tex)): the paper, the method, what we ran, what broke, lessons and how to reproduce it; written to be read without narration, for everyone.
+- **Advisor deck** ([research-update.pdf](research-update.pdf), 7 slides): the 14 October meeting deck, lightly revised on 20 October (title slide, a diagnosis-and-lessons slide, best-intermediate row); the original is kept as [research-update-2026-10-14-original.tex](research-update-2026-10-14-original.tex). Presenter notes in `research-update.pdfpc`, built by `make notes` from `speaker-notes.json`.
+
+Build: `make pdf tutorial notes` with `TECTONIC=<path to tectonic 0.17>`.
+
+# From RL reproduction to RLM research (advisor deck)
 
 [Open the advisor slides](research-update.pdf). Five main slides and one optional
 appendix explain the research arc, completed result, lessons and proposed RLM work.

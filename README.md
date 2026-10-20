@@ -50,8 +50,9 @@ restarted on 12 October ([docs/diagnosis-and-restart-20261012.md](docs/diagnosis
 
 ## Slides and learning materials
 
-- Advisor deck of 14 October 2026: [slides/research-update.pdf](slides/research-update.pdf)
-  (source, speaker guide and evidence links in [slides/](slides/README.md)).
+- **Tutorial deck** (14 slides, for everyone): [slides/tutorial.pdf](slides/tutorial.pdf).
+- Advisor deck of 14 October 2026, revised 20 October: [slides/research-update.pdf](slides/research-update.pdf)
+  (sources, presenter notes and evidence links in [slides/](slides/README.md)).
 - **Pedagogical walkthrough** of the paper, the method and this reproduction:
   https://queelius.github.io/spo-gsm8k-reproduction/ (source in `site-docs/guide.md`).
 
