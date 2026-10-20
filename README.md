@@ -52,8 +52,8 @@ restarted on 12 October ([docs/diagnosis-and-restart-20261012.md](docs/diagnosis
 
 - Advisor deck of 14 October 2026: [slides/research-update.pdf](slides/research-update.pdf)
   (source, speaker guide and evidence links in [slides/](slides/README.md)).
-- A pedagogical walkthrough of the paper, the method and this reproduction is being written as
-  `docs/GUIDE.md` (to be published as a GitHub Pages site).
+- **Pedagogical walkthrough** of the paper, the method and this reproduction:
+  https://queelius.github.io/spo-gsm8k-reproduction/ (source in `site-docs/guide.md`).
 
 ## Reproducing this reproduction
 
