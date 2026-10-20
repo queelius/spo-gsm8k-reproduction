@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this reproduction, please cite the original SPO paper and this repository."
+title: "Reproducing Segment Policy Optimization (SPO) on GSM8K with one A100"
+authors:
+  - family-names: Towell
+    given-names: Alex
+type: software
+repository-code: "https://github.com/queelius/spo-gsm8k-reproduction"
+date-released: 2026-10-14
+license: MIT
+references:
+  - type: article
+    title: "Segment Policy Optimization: Effective Segment-Level Credit Assignment in RL for Large Language Models"
+    authors:
+      - family-names: Guo
+        given-names: Yiran
+      - family-names: Xu
+        given-names: Lijie
+      - family-names: Liu
+        given-names: Jie
+      - family-names: Ye
+        given-names: Dan
+      - family-names: Qiu
+        given-names: Shuang
+    year: 2025
+    url: "https://arxiv.org/abs/2505.23564"
