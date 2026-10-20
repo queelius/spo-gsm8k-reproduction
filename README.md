@@ -67,8 +67,9 @@ restarted on 12 October ([docs/diagnosis-and-restart-20261012.md](docs/diagnosis
   endpoint (`code/fixed_endpoint.py`), the BOS-only adapter and launch script, and their tests.
   The exact author commands and configs we invoked are recorded as JSON in `docs/evidence/`
   (`author-reference-command.json`, `author-training-config.json`, and so on).
-- The trained checkpoint is not in git; it will be published on Hugging Face under
-  `queelius/` and linked here.
+- The trained checkpoint (weights and tokenizer of the audited final state) is on Hugging Face:
+  https://huggingface.co/queelius/spo-chain-rho1.1b-gsm8k-reproduction (with a licensing caveat:
+  the upstream SFT model declares no license).
 
 ## Credit and citation
 

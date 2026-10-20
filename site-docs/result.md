@@ -11,4 +11,4 @@ starting model and 56.7 % reported in the paper. The authors' released checkpoin
 - [Evidence receipts](https://github.com/queelius/spo-gsm8k-reproduction/tree/main/docs/evidence): one JSON file per claim, described in the walkthrough's section 10
 - [Scripts](https://github.com/queelius/spo-gsm8k-reproduction/tree/main/code) and [environment lock](https://github.com/queelius/spo-gsm8k-reproduction/blob/main/env/requirements-spo-6c5f947.txt)
 
-The trained checkpoint will be published on Hugging Face and linked here.
+The trained checkpoint (weights and tokenizer of the audited final state): https://huggingface.co/queelius/spo-chain-rho1.1b-gsm8k-reproduction.
