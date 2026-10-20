@@ -48,6 +48,13 @@ the paper's stated settings (for example the effective top-p of the historical e
 are listed in [docs/protocol-audit.md](docs/protocol-audit.md). A first attempt was diagnosed and
 restarted on 12 October ([docs/diagnosis-and-restart-20261012.md](docs/diagnosis-and-restart-20261012.md)).
 
+## Slides and learning materials
+
+- Advisor deck of 14 October 2026: [slides/research-update.pdf](slides/research-update.pdf)
+  (source, speaker guide and evidence links in [slides/](slides/README.md)).
+- A pedagogical walkthrough of the paper, the method and this reproduction is being written as
+  `docs/GUIDE.md` (to be published as a GitHub Pages site).
+
 ## Reproducing this reproduction
 
 - Hardware: one NVIDIA A100-PCIE-40GB (MIG 7g.40gb), driver 580.
